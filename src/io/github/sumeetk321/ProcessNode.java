@@ -1,24 +1,25 @@
+package io.github.sumeetk321;
+
 import java.util.ArrayList;
 import java.util.List;
 
 /**
  * 
+ * 
+ * 
+ * This class defines the process node object in the Kahn Process Network. Each
+ * node contains a list of incoming FIFO channels, as well as a singular output
+ * channel, as is consistent with an open KPN. It also contains a string
+ * identifier. A node is considered "active" if there is nothing preventing it
+ * from executing. However, if it stalls due to a read dependency, it becomes
+ * inactive, or in a waiting state.
+ * 
+ * The actual process method must be user-defined, which is why it is abstract.
+ * The user must create a subclass that extends this one, and define their own
+ * process method. Note that the method takes in an array of Objects - ensure to
+ * cast them to your desired data type before performing computations on them.
+ * 
  * @author Sumeet Kulkarni
- * @version 1.0
- * 
- *          This class defines the process node object in the Kahn Process
- *          Network. Each node contains a list of incoming FIFO channels, as
- *          well as a singular output channel, as is consistent with an open
- *          KPN. It also contains a string identifier. A node is considered
- *          "active" if there is nothing preventing it from executing. However,
- *          if it stalls due to a read dependency, it becomes inactive, or in a
- *          waiting state.
- * 
- *          The actual process method must be user-defined, which is why it is
- *          abstract. The user must create a subclass that extends this one, and
- *          define their own process method. Note that the method takes in an
- *          array of Objects - ensure to cast them to your desired data type
- *          before performing computations on them.
  *
  * @param <T> a generic which determines the type of data this node outputs
  */

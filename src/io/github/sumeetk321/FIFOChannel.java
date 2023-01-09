@@ -1,14 +1,18 @@
+package io.github.sumeetk321;
+
 import java.util.ArrayDeque;
 import java.util.Queue;
 
 /**
  * 
- * @author Sumeet Kulkarni This class defines the first-in-first-out channel
- *         object. It is essentially a wrapper around a Queue object, but also
- *         defines the amount of tokens that the source outputs, as well as the
- *         amount of tokens that the destination consumes to perform its
- *         computation.
- * @version 1.0
+ * 
+ * 
+ * This class defines the first-in-first-out channel object. It is essentially a
+ * wrapper around a Queue object, but also defines the amount of tokens that the
+ * source outputs, as well as the amount of tokens that the destination consumes
+ * to perform its computation. Each node contains several of these objects.
+ * 
+ * @author Sumeet Kulkarni
  * @param <T> a generic type which determines the data type in the channel
  */
 public class FIFOChannel<T> {

@@ -1,1 +1,7 @@
 /bin/
+/target/
+.idea/
+.project
+.classpath
+KPN4J.iml
+.DS_Store

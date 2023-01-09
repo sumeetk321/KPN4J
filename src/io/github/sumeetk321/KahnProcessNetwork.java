@@ -1,33 +1,31 @@
+package io.github.sumeetk321;
+
 import java.util.HashSet;
 
 /**
  * 
+ * 
+ * 
+ * The root class for Kahn Process Network construction. A KPN object simply
+ * contains a set of process nodes, each of which contain their own set of
+ * first-in-first-out channels that send and receive tokens (data).
+ * 
+ * Each process node will read a certain number of tokens and perform some
+ * user-defined function (through polymorphism), which must be deterministic
+ * (e.g., given some initial input, the process gives the same output each
+ * time).
+ * 
+ * Reading from channels is blocked; that is, if a process node does not have a
+ * sufficient number of tokens to perform its process, it will stall. Writing to
+ * a channel, however, is not blocked - it will always succeed. Keep this in
+ * mind when constructing your own models; reading dependencies can cascade and
+ * lead to overflows or deadlocks that disrupt the whole network.
+ * 
+ * Note that this KPN class defines an *open* KPN, in which each process node
+ * contains at least one input channel and exactly one output channel.
+ * 
+ * 
  * @author Sumeet Kulkarni
- * @version 1.0
- * 
- *          The root class for Kahn Process Network construction. A KPN object
- *          simply contains a set of process nodes, each of which contain their
- *          own set of first-in-first-out channels that send and receive tokens
- *          (data).
- * 
- *          Each process node will read a certain number of tokens and perform
- *          some user-defined function (through polymorphism), which must be
- *          deterministic (e.g., given some initial input, the process gives the
- *          same output each time).
- * 
- *          Reading from channels is blocked; that is, if a process node does
- *          not have a sufficient number of tokens to perform its process, it
- *          will stall. Writing to a channel, however, is not blocked - it will
- *          always succeed. Keep this in mind when constructing your own models;
- *          reading dependencies can cascade and lead to overflows or deadlocks
- *          that disrupt the whole network.
- * 
- *          Note that this KPN class defines an *open* KPN, in which each
- *          process node contains at least one input channel and exactly one
- *          output channel.
- * 
- * 
- * 
  * @param <T> a generic which defines the type of each "atom" or "token" in the
  *            KPN.
  */
@@ -97,15 +95,14 @@ public class KahnProcessNetwork<T> {
 			p.addTokensToChannel();
 		}
 	}
-	
-	
+
 	/**
 	 * Returns a string representation of the network at the current time step.
 	 */
 	public String toString() {
 		String s = "";
-		for(ProcessNode<T> p : nodeSet) {
-			s+=p.toString()+"\n";
+		for (ProcessNode<T> p : nodeSet) {
+			s += p.toString() + "\n";
 		}
 		return s;
 	}
