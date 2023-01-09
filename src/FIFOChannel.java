@@ -1,13 +1,51 @@
+import java.util.Queue;
 
-public class FIFOChannel {
-	ProcessNode<?> sourceNode;
-	ProcessNode<?> destNode;
-	int sourceProduce;
-	int destAccept;
-	public FIFOChannel(ProcessNode<?> source, ProcessNode<?> dest, int sourceProduceAmt, int destAcceptAmt) {
-		sourceNode = source;
-		destNode = dest;
-		sourceProduce = sourceProduceAmt;
-		destAccept = destAcceptAmt;
+public class FIFOChannel<T> {
+	
+	private int sourceProduceAmt;
+	private int destAcceptAmt;
+	private Queue<T> channelQueue;
+	
+	public FIFOChannel(int sourceProduceAmt, int destAcceptAmt) {
+		this.sourceProduceAmt = sourceProduceAmt;
+		this.destAcceptAmt = destAcceptAmt;
 	}
+	
+	public FIFOChannel() {
+		sourceProduceAmt = 0;
+		destAcceptAmt = 0;
+	}
+	
+	public T pop() {
+		return channelQueue.remove();
+	}
+	
+	public void push(T token) {
+		channelQueue.add(token);
+	}
+
+	public int getSourceProduceAmt() {
+		return sourceProduceAmt;
+	}
+
+	public void setSourceProduceAmt(int sourceProduceAmt) {
+		this.sourceProduceAmt = sourceProduceAmt;
+	}
+
+	public int getDestAcceptAmt() {
+		return destAcceptAmt;
+	}
+
+	public void setDestAcceptAmt(int destAcceptAmt) {
+		this.destAcceptAmt = destAcceptAmt;
+	}
+
+	public String toString() {
+		String s = "";
+		for(T t : channelQueue) {
+			s+=t.toString() + " ";
+		}
+		return s.trim();
+	}
+	
 }
