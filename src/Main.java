@@ -5,9 +5,9 @@ public class Main {
 		// TODO Auto-generated method stub
 		KahnProcessNetwork<Integer> k = new KahnProcessNetwork<Integer>();
 		
-		ExampleNode<Integer> a = new ExampleNode<Integer>("A");
-		ExampleNode<Integer> b = new ExampleNode<Integer>("B");
-		ExampleNode<Integer> c = new ExampleNode<Integer>("C");
+		ExampleNode a = new ExampleNode("A");
+		ExampleNode b = new ExampleNode("B");
+		ExampleNode c = new ExampleNode("C");
 		
 		FIFOChannel<Integer> aChannel = new FIFOChannel<Integer>(1, 1);
 		aChannel.push(1);
@@ -19,11 +19,17 @@ public class Main {
 		bChannel.push(9);
 		b.addIncomingChannel(bChannel);
 		
+		FIFOChannel<Integer> cChannel = new FIFOChannel<Integer>(1, 1);
+		cChannel.push(7);
+		cChannel.push(2);
+		c.addIncomingChannel(cChannel);
+		
 		k.addProcessNode(a);
 		k.addProcessNode(b);
 		k.addProcessNode(c);
 		k.addFIFOChannel(a, c, 1, 1);
 		k.addFIFOChannel(b, c, 1, 1);
+		k.addFIFOChannel(c, b, 1, 1);
 		
 		System.out.println(a.toString());
 		System.out.println(b.toString());
@@ -34,6 +40,25 @@ public class Main {
 		System.out.println(a.toString());
 		System.out.println(b.toString());
 		System.out.println(c.toString());
+		
+		k.simulateTimestep();
+
+		System.out.println(a.toString());
+		System.out.println(b.toString());
+		System.out.println(c.toString());
+		
+		k.simulateTimestep();
+
+		System.out.println(a.toString());
+		System.out.println(b.toString());
+		System.out.println(c.toString());
+		
+		k.simulateTimestep();
+
+		System.out.println(a.toString());
+		System.out.println(b.toString());
+		System.out.println(c.toString());
+		
 	}
 
 }
