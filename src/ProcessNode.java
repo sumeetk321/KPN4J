@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.List;
 
 public abstract class ProcessNode<T> {
@@ -7,9 +8,11 @@ public abstract class ProcessNode<T> {
 	
 	public ProcessNode(String name) {
 		id = name;
+		incomingChannels = new ArrayList<FIFOChannel<T>>();
+		outgoingChannel = new FIFOChannel<T>();
 	}
 	
-	public abstract T[] process(Object...params);
+	public abstract List<T> process(T...params);
 	
 	public void addIncomingChannel(FIFOChannel<T> f) {
 		incomingChannels.add(f);
@@ -23,8 +26,9 @@ public abstract class ProcessNode<T> {
 		this.outgoingChannel = f;
 	}
 	
+	
 	public void addTokensToChannel() {
-		Object[] params = new Object[incomingChannels.size()];
+		T[] params = (T[]) new Object[incomingChannels.size()];
 		int idx = 0;
 		for(FIFOChannel<T> f : incomingChannels) {
 			for(int i = 0; i < f.getDestAcceptAmt(); i++) {
@@ -32,7 +36,7 @@ public abstract class ProcessNode<T> {
 				idx++;
 			}
 		}
-		T[] tokens = process(params);
+		List<T> tokens = process(params);
 		for(T t : tokens) {
 			outgoingChannel.push(t);
 		}

@@ -1,3 +1,4 @@
+import java.util.ArrayDeque;
 import java.util.Queue;
 
 public class FIFOChannel<T> {
@@ -9,11 +10,13 @@ public class FIFOChannel<T> {
 	public FIFOChannel(int sourceProduceAmt, int destAcceptAmt) {
 		this.sourceProduceAmt = sourceProduceAmt;
 		this.destAcceptAmt = destAcceptAmt;
+		channelQueue = new ArrayDeque<T>();
 	}
 	
 	public FIFOChannel() {
 		sourceProduceAmt = 0;
 		destAcceptAmt = 0;
+		channelQueue = new ArrayDeque<T>();
 	}
 	
 	public T pop() {
