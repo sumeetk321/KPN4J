@@ -1,5 +1,8 @@
 <a name="readme-top"></a>
-
+[![Contributors][contributors-shield]][contributors-url]
+[![Forks][forks-shield]][forks-url]
+[![Stargazers][stars-shield]][stars-url]
+[![Issues][issues-shield]][issues-url]
 [![MIT License][license-shield]][license-url]
 [![LinkedIn][linkedin-shield]][linkedin-url]
 
@@ -105,7 +108,7 @@ kpn.addProcessNode(b);
 kpn.addProcessNode(c);
 ```
 
-Next, add the FIFO channels from A to C and from B to C:
+Next, add the FIFO channels from A to C and from B to C. The ```1,1``` parameters signify that this channel outputs one token and the destination node accepts one token as well. The same notation is used when instantiating FIFOChannel objects:
 
 ```java
 kpn.addFIFOChannel(a, c, 1, 1);
@@ -213,6 +216,14 @@ Project Link: [https://github.com/sumeetk321/KPN4J/blob/main/LICENSE](https://gi
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
+[contributors-shield]: https://img.shields.io/github/contributors/sumeetk321/KPN4J.svg?style=for-the-badge
+[contributors-url]: https://github.com/sumeetk321/KPN4J/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/sumeetk321/KPN4J.svg?style=for-the-badge
+[forks-url]: https://github.com/sumeetk321/KPN4J/network/members
+[stars-shield]: https://img.shields.io/github/stars/sumeetk321/KPN4J.svg?style=for-the-badge
+[stars-url]: https://github.com/sumeetk321/KPN4J/stargazers
+[issues-shield]: https://img.shields.io/github/issues/sumeetk321/KPN4J.svg?style=for-the-badge
+[issues-url]: https://github.com/sumeetk321/KPN4J/issues
 [license-shield]: https://img.shields.io/github/license/sumeetk321/KPN4J.svg?style=for-the-badge
 [license-url]: https://github.com/sumeetk321/KPN4J/blob/main/LICENSE
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
